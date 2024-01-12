@@ -3,7 +3,7 @@ import { Router } from "express";
 
 const TeacherRouter = Router();
 
-TeacherRouter.get("/users", TeacherController.getUsers);
-TeacherRouter.post("/createUser", TeacherController.createUser);
+TeacherRouter.get("/users", TeacherController.getTeachers);
+TeacherRouter.post("/createUser", TeacherController.createTeacher);
 
 export default TeacherRouter;

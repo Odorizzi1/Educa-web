@@ -1,16 +1,16 @@
-import mysql, { Connection } from "mysql2";
+import mysql, { Connection, ConnectionOptions } from "mysql2";
 
 let connection: Connection | null = null;
 
 export const conectarBancoDeDados = async () => {
   try {
     if (!connection) {
-      const config = {
-        user: "root",
-        password: "Xtz.,w10",
-        host: "localhost",
-        database: "educa-web",
-        port: 3309,
+      const config: ConnectionOptions = {
+        user: process.env.USER_DB,
+        password: process.env.PWD_DB,
+        host: process.env.HOST_DB,
+        database: process.env.DATABASE,
+        port: parseInt(process.env.PORT_DB || "3309"),
       };
 
       connection = await mysql.createConnection(config);

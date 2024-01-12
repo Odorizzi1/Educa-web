@@ -1,14 +1,14 @@
-
-import './App.css'
+import "./App.css";
+import { Button, Link, TextField } from "./components/atoms";
 
 function App() {
- 
-
   return (
     <>
-    <div>teste</div>
+      <Button />
+      <TextField />
+      <Link />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

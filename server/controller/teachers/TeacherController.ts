@@ -2,13 +2,13 @@ import { Request, Response } from "express";
 import TeacherService from "../../service/teachers/TeacherService";
 
 class TeacherController {
-  getUsers(req: Request, res: Response) {
-    const users = TeacherService.getUsers();
+  getTeachers(req: Request, res: Response) {
+    const users = TeacherService.getTeachers();
     res.json(users);
   }
 
-  createUser(req:Request,res:Response){
-    const user = TeacherService.createUser();
+  createTeacher(req:Request,res:Response){
+    const user = TeacherService.createTeacher();
     res.json(user);
   }
 }
