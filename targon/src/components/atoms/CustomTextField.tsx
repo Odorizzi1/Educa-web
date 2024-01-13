@@ -1,8 +1,9 @@
-import TextField from '@mui/material/TextField';
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 
-const CustomTextField = ()=>{
-    return(
-        <TextField> teste</TextField>
-    )
-}
-export {CustomTextField}
+type CustomTextFieldProps = TextFieldProps;
+
+const CustomTextField: React.FC<CustomTextFieldProps> = (props) => {
+  return <TextField {...props} fullWidth />;
+};
+
+export { CustomTextField };

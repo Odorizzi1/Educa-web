@@ -1,12 +1,11 @@
 import "./App.css";
-import { Button, Link, TextField } from "./components/atoms";
+
+import Routes from "./routes";
 
 function App() {
   return (
     <>
-      <Button />
-      <TextField />
-      <Link />
+    <Routes />
     </>
   );
 }
