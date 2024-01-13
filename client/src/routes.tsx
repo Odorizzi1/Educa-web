@@ -12,7 +12,7 @@ const Routes: React.FC = () => {
   return (
     <Router>
       <ReactRouterRoutes>
-        <Route path="/login" element={<LoginView />} />
+        <Route path="/" element={<LoginView />} />
       </ReactRouterRoutes>
     </Router>
   );
