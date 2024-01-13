@@ -8,7 +8,7 @@ O educa-web vem como uma opção pra gerenciamento escolar, com uma proposta de 
 
 Seu projeto é organizado como um monorepositório, consistindo em:
 
-- `targon/`: Código-fonte do frontend React.
+- `client/`: Código-fonte do frontend React.
 - `server/`: Código-fonte do backend Node/Express.
 
 ## Arquitetura
