@@ -11,6 +11,9 @@ Seu projeto é organizado como um monorepositório, consistindo em:
 - `targon/`: Código-fonte do frontend React.
 - `server/`: Código-fonte do backend Node/Express.
 
+## Arquitetura
+- Front: Container/Presenter
+- Back: MVC
 
 ## Pré-requisitos
 
