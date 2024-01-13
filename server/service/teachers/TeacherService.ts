@@ -13,7 +13,7 @@ class TeacherService {
       data: {
         name: "jonathan",
         email: "trojonathan@hotmail.com",
-        password:"Xtz.,w10"
+        password:"123456"
       },
     });
   }
