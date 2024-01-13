@@ -13,6 +13,7 @@ Seu projeto é organizado como um monorepositório, consistindo em:
 
 ## Arquitetura
 - Front: Container/Presenter
+- Components: Atomic Design
 - Back: MVC
 
 ## Pré-requisitos
