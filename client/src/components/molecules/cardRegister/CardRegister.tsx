@@ -1,7 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import { Button } from "../../atoms";
 
-const CardRegister = () => {
+interface CardRegisterProps{
+  onClick: ()=> void;
+}
+
+const CardRegister = ({onClick}:CardRegisterProps) => {
   return (
     <Box
       display="flex"
@@ -43,7 +47,7 @@ const CardRegister = () => {
         >
           Realize seu cadastro e fique por dentro do lançamento de suas notas.
         </Typography>
-        <Button>Cadastrar</Button>
+        <Button onClick={onClick} >Cadastrar</Button>
       </Box>
     </Box>
   );

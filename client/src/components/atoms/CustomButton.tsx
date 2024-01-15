@@ -1,8 +1,4 @@
-import { Button, createTheme, ThemeProvider } from "@mui/material";
-
-interface CustomButtonProps {
-  children: string;
-}
+import { Button, createTheme, ThemeProvider, ButtonProps } from "@mui/material";
 
 const theme = createTheme({
   components: {
@@ -16,12 +12,10 @@ const theme = createTheme({
   },
 });
 
-const CustomButton = ({ children }: CustomButtonProps) => {
+const CustomButton: React.FC<ButtonProps> = (props) => {
   return (
     <ThemeProvider theme={theme}>
-      <Button fullWidth variant="contained">
-        {children}
-      </Button>
+      <Button {...props} fullWidth variant="contained"></Button>
     </ThemeProvider>
   );
 };
