@@ -1,7 +1,9 @@
+"use client"
 import { Box } from "@mui/material";
 import { LoginFields } from "../../components/molecules/login";
 
 const LoginView = () => {
+  
   return (
     <Box
       height="100%"

@@ -1,12 +1,19 @@
 import express from "express";
-const app = express();
 import dotenv from "dotenv";
+import cors from "cors"; // Importe a biblioteca cors
 import router from "./routes/routes";
 import { conectarBancoDeDados } from "./database/ConectionDatabase";
 import bodyParser from "body-parser";
+
 dotenv.config();
 const PORT = process.env.PORT || 3000;
+
+const app = express();
+
+app.use(cors());
+
 app.use(bodyParser.json());
+
 conectarBancoDeDados()
   .then(() => {
     app.use("/", router);
