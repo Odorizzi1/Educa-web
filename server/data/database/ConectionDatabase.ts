@@ -2,7 +2,7 @@ import mysql, { Connection, ConnectionOptions } from "mysql2";
 
 let connection: Connection | null = null;
 
-export const conectarBancoDeDados = async () => {
+export const connectDb = async () => {
   try {
     if (!connection) {
       const config: ConnectionOptions = {

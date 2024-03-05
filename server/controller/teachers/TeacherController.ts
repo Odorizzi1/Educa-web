@@ -1,16 +1,14 @@
 import { Request, Response } from "express";
-import TeacherService from "../../service/teachers/TeacherService";
+import { inject } from "inversify";
+import { TeacherService } from "../../service/teacherService/TeacherService";
 
-class TeacherController {
-  getTeachers(req: Request, res: Response) {
-    const users = TeacherService.getTeachers();
-    res.json(users);
+export class TeacherController {
+  private teacherService: TeacherService;
+  constructor(@inject("TeacherService") teacherService: TeacherService) {
+    this.teacherService = teacherService;
   }
-
-  createTeacher(req:Request,res:Response){
-    const user = TeacherService.createTeacher();
-    res.json(user);
+  public async getTeachers(req: Request, res: Response) {
+    const teachers = await this.teacherService.findAllTeachers();
+    res.json(teachers);
   }
 }
-
-export = new TeacherController();

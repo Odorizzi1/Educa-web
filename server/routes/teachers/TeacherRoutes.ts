@@ -1,9 +1,10 @@
-import TeacherController from "../../controller/teachers/TeacherController";
+
 import { Router } from "express";
 
 const TeacherRouter = Router();
+//To-do tirar dúvida amanhã
 
-TeacherRouter.get("/teachers", TeacherController.getTeachers);
-TeacherRouter.post("/createUser", TeacherController.createTeacher);
+TeacherRouter.get("/teachers",  );
+
 
 export default TeacherRouter;
