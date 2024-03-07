@@ -11,7 +11,7 @@ export class TeacherService {
     this.teacherRepository = teacherRepository;
   }
   public async findAllTeachers(){
-    await this.teacherRepository.findAll()
+   return await this.teacherRepository.findAll()
   }
 
 }

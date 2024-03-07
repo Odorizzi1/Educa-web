@@ -1,14 +1,17 @@
 import { Request, Response } from "express";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { TeacherService } from "../../service/teacherService/TeacherService";
+import { ITeacher } from "../../domain/contracts/ITeacher";
+import { Teacher } from "../../domain/teacher/teacher";
 
-export class TeacherController {
+@injectable()
+export class TeacherController implements ITeacher {
   private teacherService: TeacherService;
   constructor(@inject("TeacherService") teacherService: TeacherService) {
     this.teacherService = teacherService;
   }
-  public async getTeachers(req: Request, res: Response) {
+  async getTeachers(req: Request, res: Response): Promise<Teacher[]> {
     const teachers = await this.teacherService.findAllTeachers();
-    res.json(teachers);
+    return teachers;
   }
 }

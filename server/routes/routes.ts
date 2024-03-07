@@ -1,6 +1,7 @@
 import express from "express";
-import TeacherRouter from "./teachers/TeacherRoutes";
+
 import Loginrouter from "./login/loginRoutes";
+import TeacherRouter from "./teacher/TeacherRoutes";
 const router = express.Router();
 
 router.use("/teacher", TeacherRouter);
