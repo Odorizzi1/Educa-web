@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors"; // Importe a biblioteca cors
+import cors from "cors";
 import router from "./routes/routes";
 
 import bodyParser from "body-parser";
