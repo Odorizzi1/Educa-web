@@ -18,7 +18,7 @@ const Routes: React.FC = () => {
         <Route path="/" element={<LoginView />} />
         <Route path="/registro" element={<RegisterPage />} />
         <Route path="/form-aluno" element={<StudentFormPage />}/>
-        <Route path="professor-info" element={<TeacherInfoPage />}/>
+        <Route path="/professor-info" element={<TeacherInfoPage />}/>
       </ReactRouterRoutes>
     </Router>
   );
