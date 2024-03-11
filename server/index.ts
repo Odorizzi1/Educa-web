@@ -12,11 +12,6 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 collectDefaultMetrics();
 
-const requestCounter = new Counter({
-  name: "myapp_requests_total",
-  help: "Número total de requisições ao aplicativo.",
-});
-
 app.get("/metrics", async (req, res) => {
   try {
     res.set("Content-Type", register.contentType);
@@ -26,13 +21,6 @@ app.get("/metrics", async (req, res) => {
     console.error("Erro ao obter métricas:", error);
     res.status(500).send("Erro ao obter métricas");
   }
-});
-
-app.get("/teacher", (req, res) => {
-  // Incrementar a métrica de contagem de requisições
-  requestCounter.inc();
-
-  // Outras operações do seu aplicativo
 });
 
 app.use(cors());

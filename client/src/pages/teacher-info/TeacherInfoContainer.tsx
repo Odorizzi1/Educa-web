@@ -1,23 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { TeacherInfoView } from "./TeacherInfoView";
 import { getAllTeachers } from "../../resources/API/TeacherService/TeacherService";
 import { GridColDef } from "@mui/x-data-grid";
 
 const TeacherInfoContainer = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const teachers = await getAllTeachers();
-        console.log(data, "o que vem");
-        setData(teachers);
-      } catch (error) {
-        console.error("Erro ao obter professores:", error);
-      }
-    };
+  const hasFetchedData = useRef(false);
 
-    fetchData();
+  useEffect(() => {
+    if (!hasFetchedData.current) {
+      fetchData();
+      hasFetchedData.current = true;
+    }
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const teachers = await getAllTeachers();
+      setData(teachers);
+    } catch (error) {
+      console.error("Erro ao obter professores:", error);
+    }
+  };
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "id", width: 70 },
