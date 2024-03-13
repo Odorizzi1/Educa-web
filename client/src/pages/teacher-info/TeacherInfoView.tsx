@@ -9,8 +9,12 @@ interface TeacherInfoViewProps {
 
 export const TeacherInfoView = ({ data, columns }: TeacherInfoViewProps) => {
   return (
-    <Box display={"flex"} alignItems={"center"} justifyContent={"center"} width={"100%"} height={"100%"}>
-      <Box height={400} width={"50%"}>
+    <Box display={"flex"} gap={"50px"} alignItems={"center"}  width={"100%"} height={"100%"}>
+      <Box height={"100%"} width={"400px"} bgcolor={"#EBE5F6"}>
+
+      </Box>
+      
+      <Box height={400} width={"60%"}>
         <Table
           rows={data}
           columns={columns}
