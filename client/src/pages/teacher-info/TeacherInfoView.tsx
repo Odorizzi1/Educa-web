@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { GridColDef, GridRowsProp } from "@mui/x-data-grid";
-import { Table } from "../../components/atoms";
+import { Button, Table } from "../../components/atoms";
 
 interface TeacherInfoViewProps {
   data: GridRowsProp;
@@ -9,12 +9,27 @@ interface TeacherInfoViewProps {
 
 export const TeacherInfoView = ({ data, columns }: TeacherInfoViewProps) => {
   return (
-    <Box display={"flex"} gap={"50px"} alignItems={"center"}  width={"100%"} height={"100%"}>
-      <Box height={"100%"} width={"400px"} bgcolor={"#EBE5F6"}>
+    <Box
+      display={"flex"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      width={"100%"}
+      height={"100%"}
+    >
+      <Box
+        gap={"100px"}
+        height={"70%"}
+        width={"70%"}
+        display={"flex"}
+        flexDirection={"column"}
+        position={"absolute"}
+      >
+        <Box width={"100%"} display={"flex"} justifyContent={"end"}>
+          <Box width={"200px"}>
+            <Button>Novo Professor</Button>
+          </Box>
+        </Box>
 
-      </Box>
-      
-      <Box height={400} width={"60%"}>
         <Table
           rows={data}
           columns={columns}
