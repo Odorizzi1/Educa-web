@@ -10,6 +10,7 @@ import { LoginView } from "./pages/login/LoginView";
 import { RegisterPage } from "./pages/register/RegisterPage";
 import { StudentFormPage } from "./pages/student-form/StudentFormPage";
 import { TeacherInfoPage } from "./pages/teacher-info/TeacherInfoPage";
+import { TeacherFormPage } from "./pages/teacher-form";
 
 const Routes: React.FC = () => {
   return (
@@ -17,8 +18,9 @@ const Routes: React.FC = () => {
       <ReactRouterRoutes>
         <Route path="/" element={<LoginView />} />
         <Route path="/registro" element={<RegisterPage />} />
-        <Route path="/form-aluno" element={<StudentFormPage />}/>
-        <Route path="/professor-info" element={<TeacherInfoPage />}/>
+        <Route path="/form-aluno" element={<StudentFormPage />} />
+        <Route path="/professor-info" element={<TeacherInfoPage />} />
+        <Route path="/form-professor" element={<TeacherFormPage />} />
       </ReactRouterRoutes>
     </Router>
   );

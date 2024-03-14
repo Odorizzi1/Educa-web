@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { GridColDef, GridRowsProp } from "@mui/x-data-grid";
 import { Button, Table } from "../../components/atoms";
+import { useNavigate } from "react-router-dom";
 
 interface TeacherInfoViewProps {
   data: GridRowsProp;
@@ -8,6 +9,7 @@ interface TeacherInfoViewProps {
 }
 
 export const TeacherInfoView = ({ data, columns }: TeacherInfoViewProps) => {
+  const navigate = useNavigate();
   return (
     <Box
       display={"flex"}
@@ -26,7 +28,9 @@ export const TeacherInfoView = ({ data, columns }: TeacherInfoViewProps) => {
       >
         <Box width={"100%"} display={"flex"} justifyContent={"end"}>
           <Box width={"200px"}>
-            <Button>Novo Professor</Button>
+            <Button onClick={() => navigate("/form-professor")}>
+              Novo Professor
+            </Button>
           </Box>
         </Box>
 
