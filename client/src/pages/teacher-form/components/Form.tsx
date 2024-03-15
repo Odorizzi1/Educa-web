@@ -2,6 +2,10 @@ import { Box } from "@mui/material";
 import { Button, Select, TextField } from "../../../components/atoms";
 import { Option } from "../../../components/atoms/CustomSelect";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import {
+  Teacher,
+  createTeacher,
+} from "../../../resources/API/TeacherService/TeacherService";
 
 interface IFormTeacherProps {
   options: Option[];
@@ -15,8 +19,14 @@ interface IFormInput {
 export const FormTeacher = ({ options }: IFormTeacherProps) => {
   const { control, handleSubmit } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Teacher> = async (data) => {
+    console.log(data, "data")
+    try {
+      const result = await createTeacher(data);
+    console.log(result)
+    } catch (error) {
+      console.error("Erro ao criar professor:", error);
+    }
   };
 
   return (

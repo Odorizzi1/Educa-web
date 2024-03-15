@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
-import { FormTeacher } from "./components/form";
+import { FormTeacher } from "./components/Form";
+
 
 
 const TeacherFormView = () => {

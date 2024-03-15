@@ -21,10 +21,11 @@ model User {
 }
 
 model Teachers {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+  id             Int      @id @default(autoincrement())
+  name           String
+  documentNumber String   @unique
+  subject        String
+  createdAt      DateTime @default(now())
 
   @@map("teacher")
 }
