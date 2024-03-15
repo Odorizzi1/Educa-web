@@ -5,16 +5,17 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-interface Option {
+export interface Option {
   label: string;
   value: string | number;
 }
 
-interface BasicSelectProps {
+interface CustomSelectProps {
   options: Option[];
+  [key: string]: any;
 }
 
-export function CustomSelect({ options }: BasicSelectProps) {
+export function CustomSelect({ options, ...rest }: CustomSelectProps) {
   const [value, setValue] = React.useState<string | number>("");
 
   const handleChange = (event: SelectChangeEvent<typeof value>) => {
@@ -32,6 +33,7 @@ export function CustomSelect({ options }: BasicSelectProps) {
           value={value}
           label="Select"
           onChange={handleChange}
+          {...rest}
         >
           {options.map((option, index) => (
             <MenuItem key={index} value={option.value}>

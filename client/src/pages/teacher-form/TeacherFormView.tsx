@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
-import { Button, Select, TextField } from "../../components/atoms";
+import { FormTeacher } from "./components/form";
+
 
 const TeacherFormView = () => {
   const options = [
@@ -13,27 +14,9 @@ const TeacherFormView = () => {
       height={"100%"}
       display={"flex"}
       justifyContent={"center"}
+      alignItems={"center"}
     >
-      <Box
-        width={"600px"}
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"center"}
-        gap={"50px"}
-      >
-        <Box display={"flex"} gap={"50px"}>
-          <TextField variant="standard" />
-          <TextField variant="standard" />
-        </Box>
-        <Box width={"270px"}>
-          <Select options={options} />
-        </Box>
-        <Box width={"100%"} display={"flex"} justifyContent={"flex-end"}>
-          <Box width={"400px"}>
-            <Button>Cadastrar novo professor</Button>
-          </Box>
-        </Box>
-      </Box>
+      <FormTeacher options={options} />
     </Box>
   );
 };
