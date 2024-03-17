@@ -20,7 +20,6 @@ export const FormTeacher = ({ options }: IFormTeacherProps) => {
   const { control, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<Teacher> = async (data) => {
-    console.log(data, "data")
     try {
       const result = await createTeacher(data);
     console.log(result)
