@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Typed from "typed.js";
 import { Box, Typography } from "@mui/material";
 import { Button, TextField } from "../../components/atoms";
+import { LoginFields } from "../../components/molecules/login";
 
 const LoginView = () => {
   useEffect(() => {
@@ -31,11 +32,8 @@ const LoginView = () => {
           <span id="typed-text"></span>
         </Typography>
       </Box>
-      <Box display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}>
-        <TextField />
-        <TextField />
-
-        <Button>teste</Button>
+      <Box width={"60vw"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+       <LoginFields />
       </Box>
     </Box>
   );

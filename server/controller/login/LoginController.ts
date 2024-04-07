@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import LoginService from "../../service/login/LoginService";
+import { inject, injectable } from "inversify";
 
+@injectable()
 class LoginController {
   private authService: LoginService;
 
-  constructor(authService: LoginService) {
+  constructor(@inject("LoginService") authService: LoginService) {
     this.authService = authService;
   }
 

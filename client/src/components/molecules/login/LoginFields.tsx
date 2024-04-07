@@ -17,8 +17,8 @@ const LoginFields = () => {
       <Box
         width="423px"
         height="382px"
-        borderRadius="10px"
-        boxShadow="3px 3px 10px 1px rgba(0, 0, 0, 0.25);"
+        // borderRadius="10px"
+        // boxShadow="3px 3px 10px 1px rgba(0, 0, 0, 0.25);"
         display="flex"
         alignItems="center"
         justifyContent="space-around"

@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
+import { injectable } from "inversify";
 const prisma = new PrismaClient();
+@injectable()
 class LoginService {
   private secretKey: string;
 
