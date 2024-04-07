@@ -1,8 +1,6 @@
 import { Box } from "@mui/material";
 import { FormTeacher } from "./components/Form";
 
-
-
 const TeacherFormView = () => {
   const options = [
     { label: "Matemática", value: "Matemática" },

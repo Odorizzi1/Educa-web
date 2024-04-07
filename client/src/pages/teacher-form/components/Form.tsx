@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Button, Select, TextField } from "../../../components/atoms";
 import { Option } from "../../../components/atoms/CustomSelect";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import {
   Teacher,
   createTeacher,
@@ -41,20 +41,20 @@ export const FormTeacher = ({ options }: IFormTeacherProps) => {
           <Controller
             name="name"
             control={control}
-            render={({ field }) => <TextField {...field} variant="standard" />}
+            render={({ field }) => <TextField {...field} placeholder="Nome" variant="standard" />}
           />
 
           <Controller
             name="documentNumber"
             control={control}
-            render={({ field }) => <TextField {...field} variant="standard" />}
+            render={({ field }) => <TextField {...field} placeholder="N°Documento" variant="standard" />}
           />
         </Box>
         <Box width={"270px"}>
           <Controller
             name="subject"
             control={control}
-            render={({ field }) => <Select {...field} options={options} />}
+            render={({ field }) => <Select {...field}  options={options} />}
           />
         </Box>
         <Box width={"100%"} display={"flex"} justifyContent={"flex-end"}>
