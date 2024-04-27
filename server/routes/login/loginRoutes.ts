@@ -3,6 +3,8 @@ import LoginController from "../../controller/login/LoginController";
 import LoginService from "../../service/login/LoginService";
 
 const Loginrouter = Router();
+import container from "../../data/inversify.config";
+const loginController = container.resolve(LoginController)
 
 const auth_jwt = process.env.AUTH_JWT;
 
