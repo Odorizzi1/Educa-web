@@ -1,5 +1,4 @@
 import { Container } from "inversify";
-
 import { PrismaClient } from "@prisma/client";
 import { TeacherRepository } from "./repositories/TeacherRepository/TeacherRepository";
 import { TeacherService } from "../service/teacherService/TeacherService";
