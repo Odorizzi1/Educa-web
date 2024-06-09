@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 import { GridColDef, GridRowsProp } from "@mui/x-data-grid";
 import { Button, Table } from "../../components/atoms";
 import { useNavigate } from "react-router-dom";
@@ -8,13 +8,11 @@ interface TeacherInfoViewProps {
   columns: GridColDef[];
 }
 
-
 export const TeacherInfoView = ({ data, columns }: TeacherInfoViewProps) => {
   const navigate = useNavigate();
   return (
     <Box
       display={"flex"}
-      // justifyContent={"center"}
       alignItems={"center"}
       width={"100%"}
       height={"100%"}

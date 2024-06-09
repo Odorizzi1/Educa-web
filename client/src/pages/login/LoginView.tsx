@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Typed from "typed.js";
 import { Box, Typography } from "@mui/material";
-import { Button, TextField } from "../../components/atoms";
 import { LoginFields } from "../../components/molecules/login";
 
 const LoginView = () => {
