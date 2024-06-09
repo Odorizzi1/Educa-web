@@ -1,24 +1,34 @@
 import { Box } from "@mui/material";
 import { Button, TextField } from "../../atoms";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { login } from "../../../resources/API/LoginService/LoginService";
+import { useNavigate } from "react-router-dom";
 
 type InputLogin = {
-  user: string;
+  email: string;
   password: string;
 };
 
 const LoginFields = () => {
   const { handleSubmit, control } = useForm<InputLogin>();
+  const navigate = useNavigate();
+  const onSubmit: SubmitHandler<InputLogin> = async (data) => {
+    try {
+      const _login = await login(data);
 
-  const onSubmit: SubmitHandler<InputLogin> = (data) => {};
+      if (_login) {
+        navigate("/registro");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         width="423px"
         height="382px"
-        // borderRadius="10px"
-        // boxShadow="3px 3px 10px 1px rgba(0, 0, 0, 0.25);"
         display="flex"
         alignItems="center"
         justifyContent="space-around"
@@ -32,7 +42,7 @@ const LoginFields = () => {
           height="38px"
         >
           <Controller
-            name="user"
+            name="email"
             control={control}
             defaultValue=""
             render={({ field }) => (
