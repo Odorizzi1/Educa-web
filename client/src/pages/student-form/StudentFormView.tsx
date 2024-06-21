@@ -11,14 +11,14 @@ const StudentFormView = () => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Box  display={"flex"} flexDirection={"column"} gap={"30px"}>
+        <Box display={"flex"} flexDirection={"column"} gap={"30px"}>
           <Box gap={"20px"} width={"100%"} display={"flex"}>
-            <TextField variant="standard" />
-            <TextField variant="standard" />
+            <TextField label="Nome completo" variant="standard" />
+            <TextField label="Número do documento" variant="standard" />
           </Box>
           <Box gap={"20px"} width={"100%"} display={"flex"}>
-            <TextField variant="standard" />
-            <TextField variant="standard" />
+            <TextField label="Nome do pai" variant="standard" />
+            <TextField label="Nome da mãe" variant="standard" />
           </Box>
           <Box width={"100%"}>
             <Button>Cadastrar aluno</Button>
