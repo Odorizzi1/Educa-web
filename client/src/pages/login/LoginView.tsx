@@ -23,7 +23,7 @@ const LoginView = () => {
         height="100%"
         display="flex"
         justifyContent="space-evenly"
-        bgcolor="#4F3C8E"
+        bgcolor="black"
         color="white"
         width="40vw"
       >
