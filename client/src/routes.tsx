@@ -19,16 +19,8 @@ const Routes: React.FC = () => {
     <Router>
       <ReactRouterRoutes>
         <Route path="/" element={<LoginView />} />
-        <Route path="/registro" element={<RegisterPage />} />
-        <Route path="/form-aluno" element={<StudentFormPage />} />
-        <Route path="/professor-info" element={<TeacherInfoPage />} />
-        <Route path="/form-professor" element={<TeacherFormPage />} />
         <Route path="/perfil" element={<PerfilContainer />} />
         <Route path="/start/:courses" element={<StartContainer />} />
-
-        
-
-
       </ReactRouterRoutes>
     </Router>
   );
