@@ -2,51 +2,46 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-interface Question {
-  question: string;
-  correctAnswer: string;
-  options: {
-    [key: string]: string;
-  };
-}
 
 const StartView: React.FC = () => {
   const { courses } = useParams<{ courses: string }>(); // Tipo do parâmetro 'courses'
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0); // Estado para controlar o índice da pergunta atual
 
-  const questions: Question[] = [
-    {
-      question: "Qual o ano da Independência do Brasil?",
-      correctAnswer: "a",
-      options: {
-        a: "1822",
-        b: "1820",
-        c: "1350",
-        d: "1550",
-        e: "2000",
+  async function generateQuestion(topic: string): Promise<any> {
+    const response = await fetch('http://127.0.0.1:5000/generate-question', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    },
-    // Adicione mais perguntas conforme necessário
-  ];
-
-  const handleOptionClick = (option: string) => {
-    // Lógica para verificar se a opção selecionada é a resposta correta
-    const currentQuestion = questions[currentQuestionIndex];
-    if (option === currentQuestion.correctAnswer) {
-      alert("Resposta correta!");
-    } else {
-      alert("Resposta incorreta!");
+      body: JSON.stringify({ topic }),
+    });
+  
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
     }
-
-    // Avançar para a próxima pergunta
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      alert("Quiz concluído!");
-      // Lógica para redirecionar ou reiniciar o quiz, se necessário
-    }
-  };
+  
+    const data = await response.json();
+    console.log(data, "retonro")
+    return data;
+  }
+  
+  
+  const [topic, setTopic] = useState('História do Brasil');
+  const [question, setQuestion] = useState('');
+  
+  useEffect(() => {
+    const fetchQuestion = async () => {
+      try {
+        const response = await generateQuestion(topic);
+        console.log(response, "response")
+      } catch (error) {
+        console.error('Error generating question:', error);
+      }
+    };
+  
+    fetchQuestion();
+  }, [topic]);
 
   return (
     <Box
@@ -80,7 +75,6 @@ const StartView: React.FC = () => {
         fontSize={"20px"}
         height={"200px"}
       >
-        {questions[currentQuestionIndex].question}
       </Typography>
 
       <Box
@@ -98,22 +92,7 @@ const StartView: React.FC = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          {Object.keys(questions[currentQuestionIndex].options).map((key) => (
-            <Button
-              key={key}
-              variant="contained"
-              color="primary"
-              onClick={() => handleOptionClick(key)}
-              style={{
-                width: "328px",
-                height: "80px",
-                backgroundColor: "#6A5AE0",
-                borderRadius: "18px",
-              }}
-            >
-              {questions[currentQuestionIndex].options[key]}
-            </Button>
-          ))}
+    
         </Box>
       </Box>
     </Box>
