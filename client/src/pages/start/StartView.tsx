@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 interface Question {
@@ -16,10 +16,9 @@ interface Question {
 }
 
 const StartView: React.FC = () => {
-  const { courses } = useParams<{ courses: string }>(); 
-
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  const [topic, setTopic] = useState(courses || 'História do Brasil');
+  const { courses } = useParams<{ courses: string }>();
+  const navigate = useNavigate();
+  const [topic, setTopic] = useState(courses || '');
   const [questionData, setQuestionData] = useState<Question | null>(null);
 
   async function generateQuestion(topic: string): Promise<Question> {
@@ -39,20 +38,31 @@ const StartView: React.FC = () => {
     return data.question;
   }
 
-  useEffect(() => {
-    const fetchQuestion = async () => {
-      try {
-        const response = await generateQuestion(topic);
-        setQuestionData(response); // Armazena o objeto de pergunta completo
-      } catch (error) {
-        console.error('Error generating question:', error);
-      }
-    };
+  const fetchQuestion = async () => {
+    try {
+      const response = await generateQuestion(topic);
+      setQuestionData(response);
+    } catch (error) {
+      console.error('Error generating question:', error);
+    }
+  };
 
+  useEffect(() => {
     if (topic) {
       fetchQuestion();
     }
   }, [topic]);
+
+  const verifyIfIsCorrectAnswer = (answer: String) => {
+    if (answer === questionData?.correct_answer) {
+      alert("mensagem correta")
+      fetchQuestion()
+    } else {
+      alert("mensagem errada")
+      fetchQuestion();
+    }
+
+  }
 
   return (
     <Box
@@ -72,12 +82,12 @@ const StartView: React.FC = () => {
         <i
           style={{ fontSize: "60px", color: "#849efa" }}
           className="material-icons"
+          onClick={()=> navigate("/perfil")}
         >
           chevron_left
         </i>
       </Box>
 
-      {/* Exibindo a pergunta */}
       <Typography
         textAlign={"center"}
         color={"white"}
@@ -91,7 +101,6 @@ const StartView: React.FC = () => {
         {questionData ? questionData.question : 'Carregando pergunta...'}
       </Typography>
 
-      {/* Exibindo as opções de resposta */}
       <Box
         height={"100%"}
         bgcolor={"white"}
@@ -108,13 +117,14 @@ const StartView: React.FC = () => {
           alignItems={"center"}
         >
           {questionData && (
-            <>
-              <Button variant="outlined">{questionData.options.a}</Button>
-              <Button variant="outlined">{questionData.options.b}</Button>
-              <Button variant="outlined">{questionData.options.c}</Button>
-              <Button variant="outlined">{questionData.options.d}</Button>
-              <Button variant="outlined">{questionData.options.e}</Button>
-            </>
+            <Box display={"flex"} gap={"35px"} flexDirection={"column"} width={"328px"}>
+
+              <Button style={{ borderRadius: "10px", border: "1px solid" }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.a)} variant="outlined">{questionData.options.a}</Button>
+              <Button style={{ borderRadius: "10px", border: "1px solid" }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.b)} variant="outlined">{questionData.options.b}</Button>
+              <Button style={{ borderRadius: "10px", border: "1px solid" }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.c)} variant="outlined">{questionData.options.c}</Button>
+              <Button style={{ borderRadius: "10px", border: "1px solid" }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.d)} variant="outlined">{questionData.options.d}</Button>
+              <Button style={{ borderRadius: "10px", border: "1px solid" }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.e)} variant="outlined">{questionData.options.e}</Button>
+            </Box>
           )}
         </Box>
       </Box>
