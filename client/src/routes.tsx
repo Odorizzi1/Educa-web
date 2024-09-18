@@ -14,7 +14,7 @@ const Routes: React.FC = () => {
   return (
     <Router>
       <ReactRouterRoutes>
-        <Route path="/" element={<LoginView />} />
+        {/* <Route path="/" element={<LoginView />} /> */}
         <Route path="/perfil" element={<PerfilContainer />} />
         <Route path="/start/:courses" element={<StartContainer />} />
       </ReactRouterRoutes>
