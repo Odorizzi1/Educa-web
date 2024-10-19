@@ -1,41 +1,69 @@
-import { useEffect } from "react";
-import Typed from "typed.js";
 import { Box, Typography } from "@mui/material";
-import { LoginFields } from "../../components/molecules/login";
+import { Button, TextField } from "../../components/atoms";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const LoginView = () => {
-  useEffect(() => {
-    const options = {
-      strings: ["Insira o texto aqui"],
-      typeSpeed: 100,
-    };
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate()
+  const executeLogin = async (user: String, password: String) => {
+    try {
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userName: user,
+          password: password,
+        }),
+      });
 
-    const typed = new Typed("#typed-text", options);
+      if (!response.ok) {
+        throw new Error("Login failed!");
+      }
 
-    return () => {
-      typed.destroy();
-    };
-  }, []);
+      const data = await response.json();
+      localStorage.setItem('token', data.jwt);
+      navigate("/perfil");
+
+    } catch (err: any) {
+      setError("Login failed: " + err.message);
+    }
+  };
 
   return (
-    <Box display={"flex"} width={"100%"} height={"100vh"}>
-      <Box
-        height="100%"
-        display="flex"
-        justifyContent="space-evenly"
-        bgcolor="black"
-        color="white"
-        width="40vw"
-      >
-        <Typography fontSize={"25px"} fontFamily="Roboto">
-          <span id="typed-text"></span>
-        </Typography>
+    <Box display={"flex"} width={"100%"} height={"100vh"} justifyContent={"space-between"} alignItems={"center"}>
+      <Box width={"40vw"} bgcolor={"#4F3C8E"} height={"100vh"}>
+
       </Box>
-      <Box width={"60vw"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
-       <LoginFields />
+      <Box width={"60vw"} height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"} >
+       <Box width={"30vw"} height={"50vh"} display={"flex"} borderRadius={"10px"} alignItems={"center"} justifyContent={"center"} border={"1px solid #A9A9A9"}>
+
+        <Box display="flex" gap={"15px"} flexDirection="column" alignItems={"center"}>
+          <TextField
+            label="Username"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <Typography color="error">{error}</Typography>}
+          <Button onClick={() => executeLogin(user, password)}>Login</Button>
+        </Box>
+        </Box>
       </Box>
+
     </Box>
   );
 };
 
 export { LoginView };
+
