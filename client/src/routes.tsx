@@ -6,16 +6,17 @@ import {
   Route,
   Routes as ReactRouterRoutes,
 } from "react-router-dom";
-import { LoginView } from "./pages/login/LoginView";
+
 import { PerfilContainer } from "./pages/perfil";
 import { StartContainer } from "./pages/start";
 import PrivateRoute from "./components/utils/PrivateRoute";
+import LoginContainer from "./pages/login/LoginContainer";
 
 const Routes: React.FC = () => {
   return (
     <Router>
       <ReactRouterRoutes>
-        <Route path="/" element={<LoginView />} />
+        <Route path="/" element={<LoginContainer />} />
         <Route path="/perfil" element={
           <PrivateRoute>
             <PerfilContainer />
