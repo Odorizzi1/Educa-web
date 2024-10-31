@@ -1,6 +1,5 @@
 
 export const registerUser = async (name: string, password: string, email: string) => {
-   console.log(name,password,email, "retorno")
     const response = await fetch("http://localhost:8080/users/create", {
       method: "POST",
       headers: {
