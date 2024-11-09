@@ -5,6 +5,7 @@ import Courses from "../../components/templates/courses/Courses";
 const PerfilView = () => {
   
   
+  
   return (
     <Box
     bgcolor={"#4F3C8E"}

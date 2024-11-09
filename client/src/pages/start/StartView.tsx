@@ -72,6 +72,7 @@ const StartView: React.FC = () => {
       flexDirection={"column"}
       justifyContent={"center"}
       alignItems={"center"}
+      bgcolor={"#4F3C8E"}
     >
       <Box
         display={"flex"}
@@ -80,7 +81,7 @@ const StartView: React.FC = () => {
         height={"100px"}
       >
         <i
-          style={{ fontSize: "60px", color: "#849efa" }}
+          style={{ cursor:"pointer", fontSize: "60px", color: "#849efa" }}
           className="material-icons"
           onClick={()=> navigate("/perfil")}
         >
@@ -101,13 +102,7 @@ const StartView: React.FC = () => {
         {questionData ? questionData.question : 'Carregando pergunta...'}
       </Typography>
 
-      <Box
-        height={"100%"}
-        bgcolor={"white"}
-        width={"100%"}
-        borderRadius={"22px"}
-        padding={"22px 0px"}
-      >
+    
         <Box
           padding={"22px 0px"}
           gap={"25px"}
@@ -126,7 +121,7 @@ const StartView: React.FC = () => {
               <Button style={{ borderRadius: "10px", border: "1px solid" }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.e)} variant="outlined">{questionData.options.e}</Button>
             </Box>
           )}
-        </Box>
+        
       </Box>
     </Box>
   );
