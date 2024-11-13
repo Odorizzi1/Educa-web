@@ -6,7 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Rubik,Roboto, Arial, sans-serif',
+    fontFamily: 'Rubik,Roboto, Arial, sans-serif, Poppins',
   },
 });
 

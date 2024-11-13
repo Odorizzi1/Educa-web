@@ -30,12 +30,13 @@ const LoginView: React.FC<LoginViewProps> = ({
   executeLogin,
   handleSubmit,
 }) => (
-  <Box display="flex" width="100%" height="100vh" justifyContent="space-between" alignItems="center">
-    <Box width="40vw" bgcolor="#4F3C8E" height="100vh" />
-    <Box width="60vw" height="100vh" display="flex" justifyContent="center" alignItems="center">
-      <Box width="30vw" height="50vh" display="flex" borderRadius="10px" alignItems="center" justifyContent="center" border="1px solid #A9A9A9">
+  <Box bgcolor={"#D8E7FE"} display="flex" width="100%" height="100vh" justifyContent="space-evenly" alignItems="center">
+ <Box gap={"20px"} padding={"0px 25px"}  bgcolor={"white"} flexDirection={"column"}  width="400px" height="640px" display="flex" borderRadius="10px" alignItems="center" justifyContent="center">
+        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
+          <img src="/title.png" />
+        </Box>
         {existAccount ? (
-          <Box display="flex" gap="15px" flexDirection="column" alignItems="center">
+          <Box width={"100%"} display="flex" gap="15px" flexDirection="column" alignItems="center">
             <FormLogin
               user={user}
               setUser={setUser}
@@ -46,13 +47,12 @@ const LoginView: React.FC<LoginViewProps> = ({
             />
           </Box>
         ) : (
-          <Box justifyContent="center" width="100%" height="100%" border="1px solid black" display="flex" gap="15px" flexDirection="column" alignItems="center">
+          <Box justifyContent="space-evenly" width="100%" height="100%"display="flex"  flexDirection="column" alignItems="center">
             <FormUser onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
           </Box>
         )}
         {error && <Typography color="error">{error}</Typography>}
       </Box>
-    </Box>
   </Box>
 );
 
