@@ -10,7 +10,7 @@
       "forceConsistentCasingInFileNames": true,
       "outDir": "./dist"
     },
-    "include": ["server/**/*.ts"],
+    "include": ["src/**/*"],
     "exclude": ["node_modules"]
   }
   
