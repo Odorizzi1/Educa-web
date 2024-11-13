@@ -18,7 +18,7 @@ interface Question {
 const StartView: React.FC = () => {
   const { courses } = useParams<{ courses: string }>();
   const navigate = useNavigate();
-  const [topic, setTopic] = useState(courses || '');
+  let topic = courses || ""
   const [questionData, setQuestionData] = useState<Question | null>(null);
 
   async function generateQuestion(topic: string): Promise<Question> {
@@ -37,6 +37,8 @@ const StartView: React.FC = () => {
     const data = await response.json();
     return data.question;
   }
+
+
 
   const fetchQuestion = async () => {
     try {

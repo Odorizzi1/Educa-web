@@ -16,8 +16,7 @@
 //     return data;
 //   }
   
-  
-//   const [topic, setTopic] = useState('História do Brasil');
+
 //   const [question, setQuestion] = useState('');
   
 //   useEffect(() => {
