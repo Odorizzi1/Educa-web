@@ -19,6 +19,7 @@ const HeaderPerson = () => {
           textAlign={"start"}
         >
           Bem vindo!
+          
         </Typography>
         <Typography
           color={"white"}
