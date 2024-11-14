@@ -27,7 +27,7 @@ const HeaderPerson = () => {
           lineHeight={"150%"}
           fontSize={"22px"}
         >
-          Jonathan teste
+          em construção
         </Typography>
       </Box>
       <Box

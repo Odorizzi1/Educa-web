@@ -1,6 +1,6 @@
 
 export const registerUser = async (name: string, password: string, email: string) => {
-    const response = await fetch("http://localhost:8080/users/create", {
+    const response = await fetch("https://perguntacerta-kotlin-cold-silence-3112.fly.dev/users/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

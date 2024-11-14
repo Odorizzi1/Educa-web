@@ -1,5 +1,5 @@
 export const login = async (user: string, password: string) => {
-    const response = await fetch("http://localhost:8080/login", {
+    const response = await fetch("https://perguntacerta-kotlin-cold-silence-3112.fly.dev/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
