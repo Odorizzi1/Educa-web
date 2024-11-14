@@ -19,7 +19,7 @@ const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick })
 
 
         <TextField
-          label="Insira seu nome"
+          label="Insira seu nome de usuário"
           name="name"
           value={formData.name}
           onChange={onInputChange}
