@@ -22,7 +22,7 @@ const StartView: React.FC = () => {
   const [questionData, setQuestionData] = useState<Question | null>(null);
 
   async function generateQuestion(topic: string): Promise<Question> {
-    const response = await fetch('http://127.0.0.1:5000/generate-question', {
+    const response = await fetch('https://perguntacerta-questions.fly.dev/generate-question', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
