@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import LoginView from "./LoginView";
 import { login } from "../../services/API/LoginService";
 import { registerUser } from "../../services/API/RegisterService";
+import { useAuth } from "../../context/AuthContext";
 
 
 
@@ -14,7 +15,7 @@ const LoginContainer = () => {
   const [error, setError] = useState("");
   const [existAccount, setExistAccount] = useState(true);
   const navigate = useNavigate();
-
+  const { saveToken } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -24,8 +25,9 @@ const LoginContainer = () => {
   const executeLogin = async () => {
     try {
       const data = await login(user, password);
-      localStorage.setItem("token", data.jwt);
-      navigate("/perfil");
+      saveToken(data.jwt)
+      localStorage.setItem("authToken", data.jwt);
+      navigate(`/perfil/${data.userId}`);
     } catch (err: any) {
       setError("Login failed: " + err.message);
     }

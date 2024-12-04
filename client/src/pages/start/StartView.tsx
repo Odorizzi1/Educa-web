@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 interface Question {
   question: string;
   options: {

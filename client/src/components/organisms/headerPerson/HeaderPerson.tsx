@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
-const HeaderPerson = () => {
+
+const HeaderPerson = ({ userName }: { userName: string }) => {
   return (
     <Box
       padding={"12px"}
@@ -19,7 +20,6 @@ const HeaderPerson = () => {
           textAlign={"start"}
         >
           Bem vindo!
-          
         </Typography>
         <Typography
           color={"white"}
@@ -28,7 +28,7 @@ const HeaderPerson = () => {
           lineHeight={"150%"}
           fontSize={"22px"}
         >
-          em construção
+          {userName ? userName : ""}
         </Typography>
       </Box>
       <Box

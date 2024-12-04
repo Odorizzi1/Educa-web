@@ -1,5 +1,7 @@
+import { routes } from "./envs";
+
 export const login = async (user: string, password: string) => {
-    const response = await fetch("https://perguntacerta-kotlin-cold-silence-3112.fly.dev/login", {
+    const response = await fetch(`${routes.API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

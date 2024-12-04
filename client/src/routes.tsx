@@ -17,7 +17,7 @@ const Routes: React.FC = () => {
     <Router>
       <ReactRouterRoutes>
         <Route path="/" element={<LoginContainer />} />
-        <Route path="/perfil" element={
+        <Route path="/perfil/:userId" element={
           <PrivateRoute>
             <PerfilContainer />
           </PrivateRoute>

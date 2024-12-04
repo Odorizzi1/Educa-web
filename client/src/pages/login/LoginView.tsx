@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import FormLogin from "../../components/templates/FormUser/FormLogin";
 import FormUser from "../../components/templates/FormUser/FormUser";
 
@@ -22,7 +22,6 @@ const LoginView: React.FC<LoginViewProps> = ({
   setUser,
   password,
   setPassword,
-  error,
   existAccount,
   setExistAccount,
   formData,
@@ -51,7 +50,6 @@ const LoginView: React.FC<LoginViewProps> = ({
             <FormUser onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
           </Box>
         )}
-        {error && <Typography color="error">{error}</Typography>}
       </Box>
   </Box>
 );
