@@ -15,6 +15,7 @@ interface LoginViewProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   executeLogin: () => void;
   handleSubmit: () => void;
+  loading:boolean,
 }
 
 const LoginView: React.FC<LoginViewProps> = ({
@@ -28,6 +29,7 @@ const LoginView: React.FC<LoginViewProps> = ({
   handleInputChange,
   executeLogin,
   handleSubmit,
+  loading
 }) => (
   <Box bgcolor={"#efffbe"} display="flex" width="100%" height="100vh" justifyContent="space-evenly" alignItems="center">
     <Box gap={"20px"} padding={"0px 25px"} bgcolor={"white"} flexDirection={"column"} width="400px" height="640px" display="flex" borderRadius="10px" alignItems="center" justifyContent="center">
@@ -52,11 +54,12 @@ const LoginView: React.FC<LoginViewProps> = ({
             setPassword={setPassword}
             executeLogin={executeLogin}
             setExistAccount={() => setExistAccount(false)}
+            loading={loading}
           />
         </Box>
       ) : (
         <Box justifyContent="space-evenly" width="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
-          <FormUser onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
+          <FormUser loading={loading} onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
         </Box>
       )}
     </Box>

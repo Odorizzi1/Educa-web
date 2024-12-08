@@ -16,6 +16,7 @@ const LoginContainer = () => {
   const [existAccount, setExistAccount] = useState(true);
   const navigate = useNavigate();
   const { saveToken } = useAuth();
+  const [loading,setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -24,10 +25,12 @@ const LoginContainer = () => {
 
   const executeLogin = async () => {
     try {
+     setLoading(true)
       const data = await login(user, password);
       saveToken(data.jwt)
       localStorage.setItem("authToken", data.jwt);
       navigate(`/perfil/${data.userId}`);
+      setLoading(false)
     } catch (err: any) {
       setError("Login failed: " + err.message);
     }
@@ -44,8 +47,11 @@ const LoginContainer = () => {
 
   const handleSubmit = async () => {
     try {
+      setLoading(true)
       await registerUser(formData.name, formData.password, formData.email);
-      setExistAccount(true); 
+      
+      setExistAccount(true);
+        setLoading(false)
     } catch (err: any) {
       setError("Registration failed: " + err.message);
     }
@@ -64,6 +70,7 @@ const LoginContainer = () => {
       handleInputChange={handleInputChange}
       executeLogin={executeLogin}
       handleSubmit={handleSubmit}
+      loading={loading}
     />
   );
 };

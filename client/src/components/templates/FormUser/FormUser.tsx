@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { Button, TextField } from "../../atoms";
 
 interface FormUserProps {
@@ -9,9 +9,10 @@ interface FormUserProps {
   };
   onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
+  loading: boolean
 }
 
-const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick }) => {
+const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick, loading }) => {
   return (
     <>
       <Typography fontSize={"23px"} fontFamily={"Poppins"}> Crie sua conta</Typography>
@@ -41,7 +42,11 @@ const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick })
           fullWidth
         />
       </Box>
-      <Button onClick={onClick}> Criar nova conta </Button>
+      {loading ? <CircularProgress />
+
+        :
+        <Button onClick={onClick}> Criar nova conta </Button>}
+
     </>
 
   );
