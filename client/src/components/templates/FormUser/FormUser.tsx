@@ -1,5 +1,5 @@
-import { Box, TextField, Typography } from "@mui/material";
-import { Button } from "../../atoms";
+import { Box, Typography } from "@mui/material";
+import { Button, TextField } from "../../atoms";
 
 interface FormUserProps {
   formData: {

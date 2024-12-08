@@ -1,15 +1,16 @@
-import { Box, Button, Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 import HeaderPerson from "../../components/organisms/headerPerson/HeaderPerson";
 import BoxDialog from "../../components/organisms/boxDialog/BoxDialog";
 import Courses from "../../components/templates/courses/Courses";
 import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
-import { TextField } from "../../components/atoms";
+import { Button, TextField } from "../../components/atoms";
 
 import { useParams } from "react-router-dom";
 import { registerUserInfo } from "../../services/API/UserInfoService";
 import { useAuth } from "../../context/AuthContext";
 import { routes } from "../../services/API/envs";
+import { COLORS } from "../../components/utils/colors";
 const PerfilView = () => {
 
   const [open, setOpen] = useState(true)
@@ -70,7 +71,7 @@ const PerfilView = () => {
 
   return (
     <Box
-      bgcolor={"#4F3C8E"}
+      bgcolor={`${COLORS.Primary}`}
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -87,7 +88,7 @@ const PerfilView = () => {
       <Courses />
 
 
-      {!username ?
+      {!username?
         <Modal
           onClose={() => setOpen(false)}
           aria-labelledby="modal-title"
@@ -128,7 +129,7 @@ const PerfilView = () => {
                 thickness={5}
                 color="primary"
               /> :
-              <Button onClick={sendFirstName}>Enviar</Button>
+              <Button  onClick={sendFirstName}>Enviar</Button>
             }
 
           </Box>

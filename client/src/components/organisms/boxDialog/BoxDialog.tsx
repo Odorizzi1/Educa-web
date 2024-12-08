@@ -16,7 +16,7 @@ const BoxDialog = ({ text }: BoxDialogProps) => {
         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
         backdropFilter: "blur( 10.0px ) saturate( 140% )",
         p: 3,
-        color: "#fff",
+        color: "black",
         justifyContent:"center",
         display:"flex",
         alignItems:"center"
@@ -24,7 +24,7 @@ const BoxDialog = ({ text }: BoxDialogProps) => {
     >
         <Typography
           textAlign={"center"}
-          color={"white"}
+          color={"black"}
           variant="body1"
           style={{ fontFamily: "rubik" }}
           lineHeight={"150%"}

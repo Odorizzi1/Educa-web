@@ -29,28 +29,37 @@ const LoginView: React.FC<LoginViewProps> = ({
   executeLogin,
   handleSubmit,
 }) => (
-  <Box bgcolor={"#D8E7FE"} display="flex" width="100%" height="100vh" justifyContent="space-evenly" alignItems="center">
- <Box gap={"20px"} padding={"0px 25px"}  bgcolor={"white"} flexDirection={"column"}  width="400px" height="640px" display="flex" borderRadius="10px" alignItems="center" justifyContent="center">
-        <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
-          <img src="/title.png" />
-        </Box>
-        {existAccount ? (
-          <Box width={"100%"} display="flex" gap="15px" flexDirection="column" alignItems="center">
-            <FormLogin
-              user={user}
-              setUser={setUser}
-              password={password}
-              setPassword={setPassword}
-              executeLogin={executeLogin}
-              setExistAccount={() => setExistAccount(false)}
-            />
-          </Box>
-        ) : (
-          <Box justifyContent="space-evenly" width="100%" height="100%"display="flex"  flexDirection="column" alignItems="center">
-            <FormUser onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
-          </Box>
-        )}
+  <Box bgcolor={"#efffbe"} display="flex" width="100%" height="100vh" justifyContent="space-evenly" alignItems="center">
+    <Box gap={"20px"} padding={"0px 25px"} bgcolor={"white"} flexDirection={"column"} width="400px" height="640px" display="flex" borderRadius="10px" alignItems="center" justifyContent="center">
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
+        {existAccount ? 
+         <img
+         style={{
+           width: "250px",
+           objectFit: "contain",
+           borderRadius: "40px",
+         }}
+         src="/logo1.svg" /> :undefined
+      }
+       
       </Box>
+      {existAccount ? (
+        <Box width={"100%"} display="flex" gap="15px" flexDirection="column" alignItems="center">
+          <FormLogin
+            user={user}
+            setUser={setUser}
+            password={password}
+            setPassword={setPassword}
+            executeLogin={executeLogin}
+            setExistAccount={() => setExistAccount(false)}
+          />
+        </Box>
+      ) : (
+        <Box justifyContent="space-evenly" width="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
+          <FormUser onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
+        </Box>
+      )}
+    </Box>
   </Box>
 );
 

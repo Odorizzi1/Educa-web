@@ -1,5 +1,5 @@
-import { Box, Divider, TextField, Typography } from "@mui/material";
-import { Button } from "../../atoms";
+import { Box, Divider, Typography } from "@mui/material";
+import { Button, TextField } from "../../atoms";
 
 interface FormLoginProps {
     user: string;

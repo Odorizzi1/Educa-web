@@ -12,7 +12,7 @@ const HeaderPerson = ({ userName }: { userName: string }) => {
     >
       <Box display={"flex"} flexDirection={"column"}>
         <Typography
-          color={"white"}
+          color={"black"}
           variant="body1"
           style={{ fontFamily: "rubik" }}
           lineHeight={"150%"}
@@ -22,7 +22,7 @@ const HeaderPerson = ({ userName }: { userName: string }) => {
           Bem vindo!
         </Typography>
         <Typography
-          color={"white"}
+          color={"black"}
           variant="body1"
           style={{ fontFamily: "rubik" }}
           lineHeight={"150%"}
@@ -31,12 +31,12 @@ const HeaderPerson = ({ userName }: { userName: string }) => {
           {userName ? userName : ""}
         </Typography>
       </Box>
-      <Box
+      {/* <Box
         borderRadius={"50px"}
         bgcolor={"white"}
         width={"40px"}
         height={"40px"}
-      ></Box>
+      ></Box> */}
     </Box>
   );
 };

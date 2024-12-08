@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { COLORS } from "../../utils/colors";
 
 interface SelectCoursesProps {
   icon: string;
@@ -21,7 +22,7 @@ const SelectCourses = ({ icon, course, onClick }: SelectCoursesProps) => {
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
-          bgcolor={"#C4D0FB"}
+          bgcolor={`${COLORS.Secondary}`}
           borderRadius={"18px"}
           width={"100px"}
           height={"100%"}
@@ -36,7 +37,7 @@ const SelectCourses = ({ icon, course, onClick }: SelectCoursesProps) => {
             justifyContent={"center"}
           >
             <i
-              style={{ fontSize: "32px", color: "#849efa" }}
+              style={{ fontSize: "32px", color: `${COLORS.Secondary}` }}
               className="material-icons"
             >
               {icon}
@@ -55,7 +56,7 @@ const SelectCourses = ({ icon, course, onClick }: SelectCoursesProps) => {
         </Typography>
 
         <i
-          style={{ fontSize: "32px", color: "#849efa" }}
+          style={{ fontSize: "32px", color: `${COLORS.Secondary}` }}
           className="material-icons"
         >
           chevron_right
