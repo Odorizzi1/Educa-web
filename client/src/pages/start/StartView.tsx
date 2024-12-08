@@ -46,6 +46,7 @@ const StartView: React.FC = () => {
 
   const fetchQuestion = async () => {
     try {
+      setSelected(null)
       setLoading(true)
       const response = await generateQuestion(topic);
       setQuestionData(response);
