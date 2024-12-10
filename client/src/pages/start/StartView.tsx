@@ -13,7 +13,7 @@ interface Question {
     d: string;
     e: string;
   };
-  correct_answer: string;
+  correct_answer_letter: string;
 }
 
 const StartView: React.FC = () => {
@@ -65,16 +65,18 @@ const StartView: React.FC = () => {
   }, [topic]);
 
   const verifyIfIsCorrectAnswer = (answer: string) => {
+    console.log(questionData?.correct_answer_letter)
     setSelected(answer)
   }
 
   const verifyQuestion = () => {
-    if (selected == questionData?.correct_answer) {
-      setNotify(true)
-
-    }
-    else {
-      setErrorNotify(true)
+    if (selected?.trim() === questionData?.correct_answer_letter?.trim()) {
+      console.log("Condição atingida");
+      setNotify(true);
+      console.log("é igual");
+    } else {
+      console.log("Condição não atingida");
+      setErrorNotify(true);
     }
   }
   return (
@@ -105,49 +107,49 @@ const StartView: React.FC = () => {
 
             <Button style={{
               height: '60px',
-              backgroundColor: selected === questionData.options.a ? `${COLORS.Secondary}` : 'white',
+              backgroundColor: selected === "a" ? `${COLORS.Secondary}` : 'white',
               border: 'none',
               borderRadius: "15px",
               color: `black`,
               transition: 'background-color 0.5s ease',
-            }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.a)} variant="outlined">
+            }} onClick={() => verifyIfIsCorrectAnswer("a")} variant="outlined">
               {questionData.options.a}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
               color: `black`,
-              backgroundColor: selected === questionData.options.b ? `${COLORS.Secondary}` : 'white',
+              backgroundColor: selected === "b" ? `${COLORS.Secondary}` : 'white',
               border: 'none',
               transition: 'background-color 0.5s ease',
-            }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.b)} variant="outlined">{questionData.options.b}
+            }} onClick={() => verifyIfIsCorrectAnswer("b")} variant="outlined">{questionData.options.b}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
               color: `black`,
-              backgroundColor: selected === questionData.options.c ? `${COLORS.Secondary}` : 'white',
+              backgroundColor: selected === "c" ? `${COLORS.Secondary}` : 'white',
               border: 'none',
               transition: 'background-color 0.5s ease',
-            }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.c)} variant="outlined">{questionData.options.c}
+            }} onClick={() => verifyIfIsCorrectAnswer("c")} variant="outlined">{questionData.options.c}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
               color: `black`,
-              backgroundColor: selected === questionData.options.d ? `${COLORS.Secondary}` : 'white',
+              backgroundColor: selected === "d" ? `${COLORS.Secondary}` : 'white',
               border: 'none',
               transition: 'background-color 0.5s ease',
-            }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.d)} variant="outlined">{questionData.options.d}
+            }} onClick={() => verifyIfIsCorrectAnswer("d")} variant="outlined">{questionData.options.d}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
               color: `black`,
-              backgroundColor: selected === questionData.options.e ? `${COLORS.Secondary}` : 'white',
+              backgroundColor: selected === "e" ? `${COLORS.Secondary}` : 'white',
               border: 'none',
               transition: 'background-color 0.5s ease',
-            }} onClick={() => verifyIfIsCorrectAnswer(questionData.options.e)} variant="outlined">{questionData.options.e}
+            }} onClick={() => verifyIfIsCorrectAnswer("e")} variant="outlined">{questionData.options.e}
             </Button>
             <Box width={"328px"}>
 
