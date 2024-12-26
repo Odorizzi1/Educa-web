@@ -69,6 +69,10 @@ const StartView: React.FC = () => {
     setSelected(answer)
   }
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   const verifyQuestion = () => {
     if (selected?.trim() === questionData?.correct_answer_letter?.trim()) {
       console.log("Condição atingida");
@@ -81,12 +85,12 @@ const StartView: React.FC = () => {
   }
   return (
 
-    <Box bgcolor={`${COLORS.Primary}`} display={"flex"} flexDirection={"column"} width={"100%"} height={"100%"}  >
+    <Box bgcolor={`#FFFFF`} display={"flex"} flexDirection={"column"} width={"100%"} height={"100%"}  >
       <Box width={"100%"} justifyContent={"space-between"} display={"flex"} alignItems={"start"}>
         <i
           style={{ cursor: "pointer", fontSize: "60px", color: `${COLORS.Secondary}` }}
           className="material-icons"
-          onClick={() => navigate("/perfil")}
+          onClick={() =>handleBack()}
         >
           chevron_left
         </i>
@@ -108,9 +112,9 @@ const StartView: React.FC = () => {
             <Button style={{
               height: '60px',
               backgroundColor: selected === "a" ? `${COLORS.Secondary}` : 'white',
-              border: 'none',
+              border: '1px solid #3A5A40',
               borderRadius: "15px",
-              color: `black`,
+              color: selected === "a" ? `white` : '#3A5A40',
               transition: 'background-color 0.5s ease',
             }} onClick={() => verifyIfIsCorrectAnswer("a")} variant="outlined">
               {questionData.options.a}
@@ -118,43 +122,43 @@ const StartView: React.FC = () => {
             <Button style={{
               height: '60px',
               borderRadius: "15px",
-              color: `black`,
+              color: selected === "b" ? `white` : '#3A5A40',
               backgroundColor: selected === "b" ? `${COLORS.Secondary}` : 'white',
-              border: 'none',
+              border: '1px solid #3A5A40',
               transition: 'background-color 0.5s ease',
             }} onClick={() => verifyIfIsCorrectAnswer("b")} variant="outlined">{questionData.options.b}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
-              color: `black`,
+              color: selected === "c" ? `white` : '#3A5A40',
               backgroundColor: selected === "c" ? `${COLORS.Secondary}` : 'white',
-              border: 'none',
+              border: '1px solid #3A5A40',
               transition: 'background-color 0.5s ease',
             }} onClick={() => verifyIfIsCorrectAnswer("c")} variant="outlined">{questionData.options.c}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
-              color: `black`,
+              color: selected === "d" ? `white` : '#3A5A40',
               backgroundColor: selected === "d" ? `${COLORS.Secondary}` : 'white',
-              border: 'none',
+              border: '1px solid #3A5A40',
               transition: 'background-color 0.5s ease',
             }} onClick={() => verifyIfIsCorrectAnswer("d")} variant="outlined">{questionData.options.d}
             </Button>
             <Button style={{
               height: '60px',
               borderRadius: "15px",
-              color: `black`,
+              color: selected === "e" ? `white` : '#3A5A40',
               backgroundColor: selected === "e" ? `${COLORS.Secondary}` : 'white',
-              border: 'none',
+              border: '1px solid #3A5A40',
               transition: 'background-color 0.5s ease',
             }} onClick={() => verifyIfIsCorrectAnswer("e")} variant="outlined">{questionData.options.e}
             </Button>
             <Box width={"328px"}>
 
 
-              <Button onClick={() => verifyQuestion()} fullWidth style={{ borderRadius: "20px", height: "50px", backgroundColor: selected ? `${COLORS.Secondary}` : `${COLORS.Primary}`, color: "black", border: `1px solid ${COLORS.Secondary} ` }} variant="outlined">Continuar</Button>
+              <Button onClick={() => verifyQuestion()} fullWidth style={{ borderRadius: "20px", height: "50px", backgroundColor: "#3A5A40", color: "white" }} variant="outlined">Continuar</Button>
 
               <Snackbar
                 open={notify}

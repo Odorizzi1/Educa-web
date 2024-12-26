@@ -15,13 +15,15 @@ export const theme = createTheme({
           fontWeight: "300",
           backgroundColor: `${COLORS.Secondary}`,
           fontFamily: "Poppins, sans-serif",
+          borderRadius:"15px",
+          height:"50px",
           textTransform: "none",
           "&:hover": {
-            backgroundColor: `${COLORS.Primary}`,
+            backgroundColor: `${COLORS.Secondary}`,
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
             transform: "scale(1.05)",
             transition: "all 0.3s ease-in-out",
-            color: "black"
+            color: "white"
           },
         },
       },

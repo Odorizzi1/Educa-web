@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Divider, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { Button, TextField } from "../../atoms";
 
 interface FormLoginProps {
@@ -8,40 +8,54 @@ interface FormLoginProps {
     setPassword: (value: string) => void;
     executeLogin: () => void;
     setExistAccount: (value: boolean) => void;
-    loading:boolean,
+    loading: boolean,
+    error: string
 }
 
-const FormLogin: React.FC<FormLoginProps> = ({ user, setUser, password, setPassword, executeLogin, setExistAccount,loading }) => {
+const FormLogin: React.FC<FormLoginProps> = ({ user,
+    setUser,
+    password,
+    setPassword,
+    executeLogin,
+    setExistAccount,
+    loading,
+    error }) => {
     return (
-        <>
+        <Box display={"flex"} alignItems={"center"} flexDirection={"column"} gap={"30px"}>
 
-            <TextField
-                label="Usuário"
-                value={user}
-                onChange={(e) => setUser(e.target.value)}
-                fullWidth
-            />
-            <TextField
-                label="Senha"
-                type="password"
-                value={password}
-                fullWidth
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            {loading? <CircularProgress /> :  <Button onClick={() => executeLogin()}>Login</Button> }
-           
-
-            <Box width="100%" display="flex" alignItems="center" justifyContent="center" gap="8px" mt={2}>
-                <Divider style={{ flex: 1 }} />
-                <Typography fontFamily="Poppins">ou</Typography>
-                <Divider style={{ flex: 1 }} />
+            <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={"5px"}>
+                <Typography>Usuário</Typography>
+                <TextField
+                    value={user}
+                    onChange={(e) => setUser(e.target.value)}
+                    fullWidth
+                    placeholder="Insira seu nome de usuário"
+                />
             </Box>
+            <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={"5px"}>
+                <Typography>Senha</Typography>
+                <TextField
+                    type="password"
+                    value={password}
+                    fullWidth
+                    placeholder="Insira sua senha"
+                    onChange={(e) => setPassword(e.target.value)}
+                    helperText={error}
+                />
+            </Box>
+            {loading ? <CircularProgress /> : <Button onClick={() => executeLogin()}>Entrar</Button>}
 
-        
-            <Button style={{ backgroundColor: "white", color: "black" }} onClick={() => setExistAccount(false)} fullWidth>
-                Crie sua conta
-            </Button>
-        </>
+            <span
+                style={{
+                    cursor: "pointer",
+                    color: "black",
+                    fontFamily: "Montserrat"
+                }}
+                onClick={() => setExistAccount(false)}
+            >
+                Não tem uma conta? Crie uma!
+            </span>
+        </Box>
     );
 };
 

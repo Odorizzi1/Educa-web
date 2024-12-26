@@ -1,6 +1,5 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography, useMediaQuery } from "@mui/material";
 import HeaderPerson from "../../components/organisms/headerPerson/HeaderPerson";
-import BoxDialog from "../../components/organisms/boxDialog/BoxDialog";
 import Courses from "../../components/templates/courses/Courses";
 import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -10,7 +9,6 @@ import { useParams } from "react-router-dom";
 import { registerUserInfo } from "../../services/API/UserInfoService";
 import { useAuth } from "../../context/AuthContext";
 import { routes } from "../../services/API/envs";
-import { COLORS } from "../../components/utils/colors";
 const PerfilView = () => {
 
   const [open, setOpen] = useState(true)
@@ -19,16 +17,16 @@ const PerfilView = () => {
   const [username, setUserName] = useState("")
   const { userId } = useParams()
 
-  const { token} = useAuth();
+  const { token } = useAuth();
   let parseId: number;
   if (userId) {
     parseId = parseInt(userId)
   }
 
   useEffect(() => {
-   
-      fetchUserInfo(parseId);
-    
+
+    fetchUserInfo(parseId);
+
   }, [username]);
 
   const fetchUserInfo = async (userId: number) => {
@@ -69,26 +67,61 @@ const PerfilView = () => {
     }
   };
 
+  const isMobile = useMediaQuery("(max-width:1040px)");
+
   return (
     <Box
-      bgcolor={`${COLORS.Primary}`}
-      display={"flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
       width={"100%"}
+      position="relative"
       height={"100%"}
+      justifyContent={"space-evenly"}
+      display={"flex"}
       flexDirection={"column"}
-      gap={"40px"}
-      padding={"20px 0px"}
+      alignItems={"center"}
     >
-      <HeaderPerson userName={username} />
 
-      <BoxDialog text="Conteúdos novos diariamente, aprender nunca foi tão divertido!" />
+      <Box width={!isMobile ? "510px" : "320px"}>
+        <HeaderPerson userName={username} />
 
-      <Courses />
+      </Box>
+      <Box width={!isMobile ? "510px" : "320px"}>
+        <Courses />
+      </Box>
 
 
-      {!username?
+
+      {!isMobile ?
+        <Box
+          component="div"
+          position="absolute"
+          top="50%"
+          right="-20%"
+          width="45%"
+          height="120%"
+          bgcolor="#A5D6A7"
+          borderRadius="50%"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          sx={{
+            transform: "translateY(-50%)",
+          }}
+        >
+          <img
+            style={{
+              width: "40%",
+              height: "auto",
+              transform: "translateX(-36%)",
+            }}
+            src="/teacherSet.png"
+            alt="Teacher"
+
+          />
+        </Box> : undefined
+      }
+
+
+      {!username ?
         <Modal
           onClose={() => setOpen(false)}
           aria-labelledby="modal-title"
@@ -129,7 +162,7 @@ const PerfilView = () => {
                 thickness={5}
                 color="primary"
               /> :
-              <Button  onClick={sendFirstName}>Enviar</Button>
+              <Button onClick={sendFirstName}>Enviar</Button>
             }
 
           </Box>

@@ -14,11 +14,14 @@ interface FormUserProps {
 
 const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick, loading }) => {
   return (
-    <>
-      <Typography fontSize={"23px"} fontFamily={"Poppins"}> Crie sua conta</Typography>
+    <Box display={"flex"} flexDirection={"column"} gap={"20px"}>
+      <Box>
+        <Typography fontWeight={500} fontSize={"32px"} fontFamily={"Montserrat"}> Crie sua conta</Typography>
+        <Typography fontWeight={500} fontSize={"18px"} fontFamily={"Montserrat"}>   Insira os dados abaixo para começar a aprender!</Typography>
+      </Box>
       <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={"10px"}>
 
-
+        <Typography > Nome de usuário</Typography>
         <TextField
           label="Insira seu nome de usuário"
           name="name"
@@ -26,18 +29,20 @@ const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick, l
           onChange={onInputChange}
           fullWidth
         />
+        <Typography >E-mail</Typography>
         <TextField
-          label="Insira sua senha"
-          name="password"
-          type="password"
-          value={formData.password}
+          placeholder="Insira seu email"
+          name="email"
+          value={formData.email}
           onChange={onInputChange}
           fullWidth
         />
+        <Typography >Senha</Typography>
         <TextField
-          label="Insira seu email"
-          name="email"
-          value={formData.email}
+          placeholder="Insira sua senha"
+          name="password"
+          type="password"
+          value={formData.password}
           onChange={onInputChange}
           fullWidth
         />
@@ -47,7 +52,7 @@ const FormUser: React.FC<FormUserProps> = ({ formData, onInputChange, onClick, l
         :
         <Button onClick={onClick}> Criar nova conta </Button>}
 
-    </>
+    </Box>
 
   );
 };

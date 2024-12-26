@@ -8,21 +8,22 @@ interface SelectCoursesProps {
 }
 const SelectCourses = ({ icon, course, onClick }: SelectCoursesProps) => {
   return (
-    <div style={{cursor:"pointer"}} onClick={onClick}>
+    <div style={{cursor:"pointer", width:"100%"}} onClick={onClick}>
       <Box
-        width={"324px"}
-        height={80}
+        width={"100%"}
+        height={"87px"}
         borderRadius={"20px"}
         border={"2px solid #EFEEFC"}
         display={"flex"}
         alignItems={"center"}
         justifyContent={"space-between"}
+        bgcolor={"#3A5A40"}
       >
         <Box
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
-          bgcolor={`${COLORS.Secondary}`}
+          // bgcolor={`${COLORS.Secondary}`}
           borderRadius={"18px"}
           width={"100px"}
           height={"100%"}
@@ -45,7 +46,7 @@ const SelectCourses = ({ icon, course, onClick }: SelectCoursesProps) => {
           </Box>
         </Box>
         <Typography
-          color={"black"}
+          color={"white"}
           variant="body1"
           style={{ fontFamily: "rubik" }}
           lineHeight={"150%"}
@@ -56,7 +57,7 @@ const SelectCourses = ({ icon, course, onClick }: SelectCoursesProps) => {
         </Typography>
 
         <i
-          style={{ fontSize: "32px", color: `${COLORS.Secondary}` }}
+          style={{ fontSize: "32px", color: `white` }}
           className="material-icons"
         >
           chevron_right

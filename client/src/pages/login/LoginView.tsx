@@ -1,7 +1,6 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import FormLogin from "../../components/templates/FormUser/FormLogin";
 import FormUser from "../../components/templates/FormUser/FormUser";
-
 
 interface LoginViewProps {
   user: string;
@@ -15,7 +14,8 @@ interface LoginViewProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   executeLogin: () => void;
   handleSubmit: () => void;
-  loading:boolean,
+  loading: boolean,
+  isMobile: boolean;
 }
 
 const LoginView: React.FC<LoginViewProps> = ({
@@ -29,40 +29,68 @@ const LoginView: React.FC<LoginViewProps> = ({
   handleInputChange,
   executeLogin,
   handleSubmit,
-  loading
+  loading,
+  isMobile,
+  error
 }) => (
-  <Box bgcolor={"#efffbe"} display="flex" width="100%" height="100vh" justifyContent="space-evenly" alignItems="center">
-    <Box gap={"20px"} padding={"0px 25px"} bgcolor={"white"} flexDirection={"column"} width="400px" height="640px" display="flex" borderRadius="10px" alignItems="center" justifyContent="center">
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
-        {existAccount ? 
-         <img
-         style={{
-           width: "250px",
-           objectFit: "contain",
-           borderRadius: "40px",
-         }}
-         src="/logo1.svg" /> :undefined
+  <Box textAlign={"start"} bgcolor={"#FFFFFF"} display="flex" width="100%" height="100vh" justifyContent="space-evenly" alignItems="center">
+
+    <Box padding={isMobile ? "20px" : "0px"} height={"500px"} display={"flex"} flexDirection={"column"} justifyContent={"space-evenly"} width={"465px"}>
+      {existAccount ?
+        <>
+
+          <Box>
+            <Typography fontSize={"32px"} fontFamily={"Montserrat"} fontWeight={500}>Bem vindo!</Typography>
+            <Typography fontSize={"18px"} fontFamily={"Montserrat"} fontWeight={500} >Entre na sua conta abaixo para começar.</Typography>
+          </Box>
+          <Box>
+            <FormLogin
+              user={user}
+              setUser={setUser}
+              password={password}
+              setPassword={setPassword}
+              executeLogin={executeLogin}
+              loading={loading}
+              setExistAccount={setExistAccount}
+              error={error}
+            />
+
+          </Box>
+        </>
+        : <FormUser
+          formData={formData}
+          onInputChange={handleInputChange}
+          onClick={handleSubmit}
+          loading={loading}
+        />
       }
-       
+      <Box width={"100%"} display={"flex"} alignItems={"start"}>
+        <img
+          style={{
+            width: "200px",
+            height: "100px",
+            objectFit: "contain",
+            borderRadius: "40px",
+            margin: "-15px"
+          }}
+          src="/pergunta-logo2.png" />
       </Box>
-      {existAccount ? (
-        <Box width={"100%"} display="flex" gap="15px" flexDirection="column" alignItems="center">
-          <FormLogin
-            user={user}
-            setUser={setUser}
-            password={password}
-            setPassword={setPassword}
-            executeLogin={executeLogin}
-            setExistAccount={() => setExistAccount(false)}
-            loading={loading}
-          />
-        </Box>
-      ) : (
-        <Box justifyContent="space-evenly" width="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
-          <FormUser loading={loading} onClick={handleSubmit} formData={formData} onInputChange={handleInputChange} />
-        </Box>
-      )}
     </Box>
+
+    {!isMobile ?
+      <Box display={"flex"} alignItems={"center"} justifyContent={"center"} width={"596px"} height={"738px"} borderRadius={"49px"} bgcolor={"#3A5A40"} >
+        <img
+          style={{
+            width: "480px",
+            height: "523px",
+            objectFit: "contain",
+            borderRadius: "40px",
+          }}
+          src="/boy-study.png" />
+      </Box>
+      : undefined
+    }
+
   </Box>
 );
 

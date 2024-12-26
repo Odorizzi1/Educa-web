@@ -7,6 +7,8 @@ import { login } from "../../services/API/LoginService";
 import { registerUser } from "../../services/API/RegisterService";
 import { useAuth } from "../../context/AuthContext";
 
+import { useMediaQuery } from "@mui/material";
+
 
 
 const LoginContainer = () => {
@@ -16,7 +18,7 @@ const LoginContainer = () => {
   const [existAccount, setExistAccount] = useState(true);
   const navigate = useNavigate();
   const { saveToken } = useAuth();
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -25,14 +27,14 @@ const LoginContainer = () => {
 
   const executeLogin = async () => {
     try {
-     setLoading(true)
+      setLoading(true)
       const data = await login(user, password);
       saveToken(data.jwt)
       localStorage.setItem("authToken", data.jwt);
       navigate(`/perfil/${data.userId}`);
       setLoading(false)
     } catch (err: any) {
-      setError("Login failed: " + err.message);
+      setError("Verifique suas credenciais e tente novamente.");
     }
   };
 
@@ -49,13 +51,14 @@ const LoginContainer = () => {
     try {
       setLoading(true)
       await registerUser(formData.name, formData.password, formData.email);
-      
+
       setExistAccount(true);
-        setLoading(false)
+      setLoading(false)
     } catch (err: any) {
       setError("Registration failed: " + err.message);
     }
   };
+  const isMobile = useMediaQuery("(max-width:390px)");
 
   return (
     <LoginView
@@ -71,6 +74,7 @@ const LoginContainer = () => {
       executeLogin={executeLogin}
       handleSubmit={handleSubmit}
       loading={loading}
+      isMobile={isMobile}
     />
   );
 };

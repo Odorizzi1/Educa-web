@@ -11,34 +11,14 @@ const Courses = () => {
       display={"flex"}
       flexDirection={"column"}
       gap={"16px"}
-      width={"328px"}
       borderRadius={"30px"}
       bgcolor={"white"}
     >
-      <Box width={"324px"}>
-        <Typography
-          textAlign={"start"}
-          color={"black"}
-          variant="body1"
-          style={{ fontFamily: "rubik" }}
-          lineHeight={"150%"}
-          fontWeight={"500"}
-          fontSize={"20px"}
-        >
-          Vamos estudar?
-        </Typography>
-        <Typography
-          textAlign={"start"}
-          color={"black"}
-          variant="body1"
-          style={{ fontFamily: "rubik" }}
-          lineHeight={"150%"}
-          fontWeight={"300"}
-          fontSize={"14px"}
-        >
-          Todos os dias perguntas novas para você praticar!
-        </Typography>
-      </Box>
+    <Typography textAlign={"left"} fontWeight={600} fontFamily={"Montserrat"} fontSize={"26px"}>Vamos estudar? todo dia temos perguntas novas para você praticar.</Typography>
+    <Typography textAlign={"left"} fontWeight={500} fontFamily={"Montserrat"} fontSize={"22px"}>Selecione um tema para começar a aprender:</Typography>
+
+
+
       <SelectCourses
         onClick={() => navigate("/start/matematica")}
         course="Matemática"

@@ -12,9 +12,9 @@ const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: "#d9d9d9", // Cor da label padrão
+          color: "#d9d9d9",
           "&.Mui-focused": {
-            color: `${COLORS.Secondary}`, // Cor da label no foco
+            color: `${COLORS.Secondary}`,
           },
         },
       },
@@ -23,19 +23,21 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: `${COLORS.Secondary}`, // Cor padrão da borda
+            borderColor: `${COLORS.Secondary}`,
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: `${COLORS.Secondary}`, // Cor no hover
+            borderColor: `${COLORS.Secondary}`,
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: `${COLORS.Secondary}`, // Cor no foco (forçando o estilo)
-            transition: "all 0.3s ease-in-out", // Suavizando a transição
+            borderColor: `${COLORS.Secondary}`,
+            transition: "all 0.3s ease-in-out",
           },
+          borderRadius: "15px",
+          height: "50px",
         },
         input: {
           "&:focus": {
-            outline: "none", // Remove qualquer outline padrão
+            outline: "none",
           },
         },
       },
