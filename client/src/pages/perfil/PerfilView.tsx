@@ -71,6 +71,7 @@ const PerfilView = () => {
 
   return (
     <Box
+    overflow={"hidden"}
       width={"100%"}
       position="relative"
       height={"100%"}
