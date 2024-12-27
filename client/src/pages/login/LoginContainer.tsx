@@ -7,7 +7,7 @@ import { login } from "../../services/API/LoginService";
 import { registerUser } from "../../services/API/RegisterService";
 import { useAuth } from "../../context/AuthContext";
 
-import { useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "react-responsive";
 
 
 
@@ -58,7 +58,7 @@ const LoginContainer = () => {
       setError("Registration failed: " + err.message);
     }
   };
-  const isMobile = useMediaQuery("(max-width:390px)");
+  const isMobile = useMediaQuery({ query: "(max-width: 1200px)" });
 
   return (
     <LoginView
