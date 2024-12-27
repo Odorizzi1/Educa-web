@@ -90,7 +90,7 @@ const StartView: React.FC = () => {
         <i
           style={{ cursor: "pointer", fontSize: "60px", color: `${COLORS.Secondary}` }}
           className="material-icons"
-          onClick={() =>handleBack()}
+          onClick={() => handleBack()}
         >
           chevron_left
         </i>
@@ -168,6 +168,11 @@ const StartView: React.FC = () => {
                 action={
                   <Button
                     color="secondary"
+                    sx={{
+
+                      color: 'green',
+
+                    }}
                     size="small"
                     onClick={
                       () => {
@@ -185,7 +190,13 @@ const StartView: React.FC = () => {
                 onClose={() => setErrorNotify(false)}
                 message="Resposta errada, tente novamente!"
                 action={
-                  <Button color="secondary" size="small" onClick={() => setErrorNotify(false)}>
+                  <Button
+                    sx={{
+                    
+                      color: '#D32F2F',
+
+                    }}
+                    color="secondary" size="small" onClick={() => setErrorNotify(false)}>
                     Tentar novamente
                   </Button>
                 }
