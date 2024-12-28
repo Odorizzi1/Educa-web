@@ -35,6 +35,7 @@ const LoginContainer = () => {
       setLoading(false)
     } catch (err: any) {
       setError("Verifique suas credenciais e tente novamente.");
+      setLoading(false)
     }
   };
 
@@ -56,6 +57,7 @@ const LoginContainer = () => {
       setLoading(false)
     } catch (err: any) {
       setError("Registration failed: " + err.message);
+      setLoading(false)
     }
   };
   const isMobile = useMediaQuery({ query: "(max-width: 1200px)" });
